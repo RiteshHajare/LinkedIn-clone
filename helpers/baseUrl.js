@@ -1,2 +1,2 @@
-const baseUrl=  process.env.NODE_ENV==="Production"?"":"http://localhost:3000"
+const baseUrl=  process.env.NODE_ENV==="https://linkedinwebapp.netlify.app/"
 export default baseUrl
