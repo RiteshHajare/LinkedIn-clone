@@ -45,6 +45,12 @@ function LoggedNav({image}) {
       });
     }
 
+    function handleLogout(){
+      cookies.remove('token', { path: '/' });
+      router.push({
+        pathname: '/'
+      });
+    }
     
     
   return (
@@ -118,12 +124,12 @@ function LoggedNav({image}) {
             </div>
               <div className="right basis-52">
                 <h4 className="font-semibold">Ritesh Hajare</h4>
-                <p className="text-sm">Student at JSPM's Rajarshi Shahu College of Engineering</p>
+                <p className="text-sm">Student at JSPM&apos;s Rajarshi Shahu College of Engineering</p>
               </div>
             </div>
             <button onClick={navProfile} className="dropbtn hover:bg-hoverblue">View Profile</button>
             <hr className="hrline my-4" />
-            <p className="logoutbtn pl-3 hover:underline">Sign out</p>
+            <p onClick={handleLogout} className="logoutbtn pl-3 hover:underline">Sign out</p>
           </div>
         </div>
         <div  className="hidden sm:block spanor"></div>

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Cookies from 'universal-cookie';
 
-function signup() {
+function Signup() {
   const cookies = new Cookies();
   const router = useRouter();
   const [toggle, setToggle] = useState("password");
@@ -117,7 +117,7 @@ function signup() {
     </button>
     </div></div>}
       <div className="flex flex-col h-3/5 mt-8 items-center gap-8 ">
-      <h1 className="md:hidden text-center text-2xl font-medium">Join LinkedIn now — it's free!</h1>
+      <h1 className="md:hidden text-center text-2xl font-medium">Join LinkedIn now — it&apos;s free!</h1>
         <h1 className="text-3xl ml-6 hidden lg:ml-0 lg:block">Make the most of your professional life</h1>
         <div className="card bg-white flex flex-col items-left gap-xl w-full lg:w-1/3  p-6 mb-8">
             <div className="w-full">
@@ -169,4 +169,4 @@ function signup() {
   )
 }
 
-export default signup
+export default Signup

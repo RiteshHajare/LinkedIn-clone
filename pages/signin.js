@@ -5,9 +5,10 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from 'universal-cookie';
-import HeadTag from "@/components/headTag";
+import HeadTag from "@/components/HeadTag";
 
-function signin() {
+
+function Signin() {
   const cookies = new Cookies();
   const router = useRouter();
   const inputTxt = useRef(null);
@@ -93,4 +94,4 @@ function signin() {
   )
 }
 
-export default signin
+export default Signin

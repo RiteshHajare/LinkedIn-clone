@@ -4,7 +4,7 @@ import LoggedNav from '@/components/LoggedNav'
 import RightGrid from '@/components/RightGrid'
 import React from 'react'
 
-function mynetwork() {
+function Mynetwork() {
   return (
     <div className='mynetwork min-h-screen'>
         <HeadTag title={"LinkedIn"}  />
@@ -37,4 +37,4 @@ function mynetwork() {
   )
 }
 
-export default mynetwork
+export default Mynetwork

@@ -2,16 +2,16 @@ import BasicConnectCard from "@/components/BasicConnectCard"
 import HeadTag from "@/components/HeadTag"
 import LoggedNav from "@/components/LoggedNav"
 import ProfileIntro from "@/components/ProfileIntro"
-import { useState ,useEffect} from "react"
+import { useState,useEffect } from 'react'
 import { useRouter } from 'next/router';
 import axios from "axios"
 import baseUrl from "@/helpers/baseUrl"
 
 
-function profile() {
+function Profile({token}) {
     const [introToggle, setIntroToggle] = useState(false)
     const router = useRouter();
-    const { token } = router.query; 
+    // const { token } = router.query; 
     const [introData, setIntroData] = useState({});
     const [allUsers, setAllUsers] = useState([]);
     const [images, setImages] = useState({
@@ -26,6 +26,7 @@ function profile() {
    }, [])
 
    async function users(){
+    console.log(token);
     const self = await axios.get(`${baseUrl}/api/intro`,{
         headers: {
           Authorization: 'Bearer ' + token
@@ -120,7 +121,7 @@ function profile() {
             <div style={{flexBasis:"18.7 rem"}} className="ml-auto mr-auto mb-4 sm:mb-0 sm:m-0 allbasicconnect w-width95 sm:w-18.7 post profileright px-6 py-4 bg-white ">
                     <h1 className="mb-3 font-medium">People also viewed</h1>
                     {allUsers.map((user,index)=>{
-                        return <BasicConnectCard user={user} />
+                        return <BasicConnectCard key={index} user={user} />
                     })}
             </div>
         </div>
@@ -128,14 +129,20 @@ function profile() {
   )
 }
 
-export default profile
+export default Profile
 
-// export async function getStaticProps(context) {
-//     const res = await fetch(`${baseUrl}/api/profile`);
-//     const data = await res.json();
-//     console.log(data);
-//     return {
-//       props: {data}, // will be passed to the page component as props
-//     }
-//   }
-
+export async function getServerSideProps(context) {
+    
+      if(!context.req.cookies.token){
+        return {
+          redirect: {
+            permanent: false,
+            destination: "/",
+          },
+          props:{},
+        };
+      }
+      return {
+        props:{token:context.req.cookies.token}
+        }
+  }

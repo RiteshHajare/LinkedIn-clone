@@ -9,7 +9,7 @@ import axios from "axios";
 import {useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-function feed({token,data}) {
+function Feed({token,data}) {
   const [posted, setposted] = useState(false)
   const [postedMessage, setpostedMessage] = useState(false)
   const [createPost, setCreatePost] = useState(false);
@@ -73,7 +73,7 @@ function feed({token,data}) {
             <h1 onClick={navProfile} className="text-center mt-11 font-medium mb-0 pb-0 cursor-pointer hover:underline">{data.self.firstName?data.self.firstName:data.self.username.split("@")[0]} {data.self.firstName && data.self.lastName}</h1>
             <p className=" college break-all">{data.self.headline && (data.self.headline.length>68 ? (data.self.headline.substring(0,65).trim()+"..."):data.self.headline)}</p>
             <hr className="hrline" />
-            <small className="cursor-pointer py-1  leftdetail mt-4 pl-3 font-medium  relative">Who's viewed your profile <span className="text-linkedincolor2  absolute right-4">23</span></small>
+            <small className="cursor-pointer py-1  leftdetail mt-4 pl-3 font-medium  relative">Who&apos;s viewed your profile <span className="text-linkedincolor2  absolute right-4">23</span></small>
             <small className="cursor-pointer py-1 leftdetail mb-4 pl-3 font-medium relative">Impressions of your posts <span className="text-linkedincolor2  absolute right-4">2333</span></small>
             <hr className="hrline" />
             <small className="block text-left pl-4 py-3 feature font-medium">
@@ -87,12 +87,12 @@ function feed({token,data}) {
             <p className="flex gap-2  mb-1"><PeopleSvg />Java Learning Group - Linkedin </p>
             <p className="flex gap-2  mb-1"><PeopleSvg />Fuel fellows and alumni students </p>
             <p className="flex gap-2  mb-1"><PeopleSvg />The Sparks foundation network </p>
-            <p className="flex gap-2  mb-1"><PeopleSvg />Java Developer's Community </p>
-            <p className="flex gap-2 mb-1"><PeopleSvg />LET's Grow More community </p>
+            <p className="flex gap-2  mb-1"><PeopleSvg />Java Developer&apos;s Community </p>
+            <p className="flex gap-2 mb-1"><PeopleSvg />LET&apos;s Grow More community </p>
             <h5 className="text-linkedincolor2 text-xs my-3">Groups</h5>
             <p className="flex gap-2  mb-1"><PeopleSvg />The Sparks foundation network </p>
-            <p className="flex gap-2  mb-1"><PeopleSvg />Java Developer's Community </p>
-            <p className="flex gap-2  mb-1"><PeopleSvg />LET's Grow More community </p>
+            <p className="flex gap-2  mb-1"><PeopleSvg />Java Developer&apos;s Community </p>
+            <p className="flex gap-2  mb-1"><PeopleSvg />LET&apos;s Grow More community </p>
           </div>
         </div>
         <div className="grid-item relative postsdiv mt-3 sm:mt-0">
@@ -126,8 +126,8 @@ function feed({token,data}) {
                 </div>
               </div>
           </div>
-          {posts && posts.map(post=>{
-            return <Post post={post} />
+          {posts && posts.map((post,index)=>{
+            return <Post key={index} post={post} />
           })}
             {/* <i className="fa-solid text-3xl fa-arrow-down absolute bottom-0 left-1/2"></i> */}
           </div>
@@ -139,7 +139,7 @@ function feed({token,data}) {
   )
 }
 
-export default feed
+export default Feed
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;

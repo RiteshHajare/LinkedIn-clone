@@ -80,6 +80,7 @@ export default function Home() {
         </div>
         <img className='w-1/2 relative rootimg mt-12' src="/rootimg.svg" alt="" />
       </main>
+      
     </>
   )
 }

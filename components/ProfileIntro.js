@@ -1,7 +1,8 @@
 import baseUrl from "@/helpers/baseUrl";
 import axios from "axios";
 import { useRef } from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useState,useEffect } from 'react'
+
 
 function ProfileIntro(props) {
   const handleRef = useRef();
