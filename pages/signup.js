@@ -78,7 +78,7 @@ function Signup() {
     }
     if(err.username==="" && err.password==="" && form.username!=="" && form.password!==""){
       
-      const res =  await axios.post(`${baseUrl}/api/signup`,form);
+      const res =  await axios.post(`/api/signup`,form);
       if(res.status===201){
         console.log(res.data);
         cookies.set('token', res.data.token, { path: '/' })

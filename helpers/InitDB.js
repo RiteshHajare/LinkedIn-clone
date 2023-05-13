@@ -1,6 +1,6 @@
 import mongoose  from "mongoose";
 
-function initDB(){
+ function initDB(){
     if(mongoose.connections[0].readyState){
         console.log('already connected');
         return;
