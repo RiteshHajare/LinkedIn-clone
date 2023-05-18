@@ -27,14 +27,14 @@ function Profile({token}) {
 
    async function users(){
     console.log(token);
-    const self = await axios.get(`/api/intro`,{
+    const self = await axios.get(`${baseUrl}/api/intro`,{
         headers: {
           Authorization: 'Bearer ' + token
         }
       });
       setImages({myimg:self.data.image,bgimg:self.data.bgimg});
       setshowImg(true)
-    const users = await axios.get(`/api/profile`,{
+    const users = await axios.get(`${baseUrl}/api/profile`,{
         headers: {
           Authorization: 'Bearer ' + token
         }
@@ -50,7 +50,7 @@ function Profile({token}) {
     }, [introToggle])
 
     async function getData(){
-        const res = await axios.get(`/api/intro`,{
+        const res = await axios.get(`${baseUrl}/api/intro`,{
             headers: {
               Authorization: 'Bearer ' + token
             }})
@@ -66,7 +66,7 @@ function Profile({token}) {
             form.append('upload_preset', 'linkedinMedia');
             form.append('cloud_name', 'dgz1wimeg');
             const url = await axios.post("https://api.cloudinary.com/v1_1/dgz1wimeg/upload", form)
-            const res = await axios.post(`/api/profile`,{link:url.data.url,type:e.target.name},{
+            const res = await axios.post(`${baseUrl}/api/profile`,{link:url.data.url,type:e.target.name},{
                 headers: {
                   Authorization: 'Bearer ' + token
                 }

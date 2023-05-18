@@ -31,7 +31,7 @@ function Signin() {
   }, [])
 
   async function handleClick(){
-    const res = await axios.post(`/api/login`,form)
+    const res = await axios.post(`${baseUrl}/api/login`,form)
     if(res.data.success){
       cookies.set('token', res.data.token, { path: '/' })
       router.push('/feed');
