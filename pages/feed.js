@@ -145,7 +145,7 @@ export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
   const headers = new Headers();
   headers.append('Authorization', `Bearer ${token}`); 
-  const res = await fetch(`http://localhost:3000/api/feed`,{headers});
+  const res = await fetch(`https://linkedinwebapp.netlify.app/api/feed`,{headers});
   const data = await res.json();
   // console.log(data);
     if(!context.req.cookies.token){
